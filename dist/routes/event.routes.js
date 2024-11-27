@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.eventRoutes = void 0;
+const express_1 = require("express");
+exports.eventRoutes = (0, express_1.Router)();
+const eventControllers_1 = require("../controllers/eventControllers");
+const validate_token_1 = require("../helpers/validate-token");
+exports.eventRoutes.get('/events/', validate_token_1.verifyToken, eventControllers_1.eventsGetController);
+exports.eventRoutes.get('/events/:id', validate_token_1.verifyToken, eventControllers_1.eventGetController);
+exports.eventRoutes.post('/events/:id', validate_token_1.verifyToken, eventControllers_1.eventPostController);
+exports.eventRoutes.delete('/events/:id', validate_token_1.verifyToken, eventControllers_1.eventDeleteController);
+exports.eventRoutes.put('/events/:id', validate_token_1.verifyToken, eventControllers_1.eventPutController);

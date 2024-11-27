@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.locationRoutes = void 0;
+const express_1 = require("express");
+exports.locationRoutes = (0, express_1.Router)();
+const locationControllers_1 = require("../controllers/locationControllers");
+const validate_token_1 = require("../helpers/validate-token");
+exports.locationRoutes.get('/locations/', validate_token_1.verifyToken, locationControllers_1.locationsGetController);
+exports.locationRoutes.get('/locations/:id', validate_token_1.verifyToken, locationControllers_1.locationGetController);
+exports.locationRoutes.post('/locations/:id', validate_token_1.verifyToken, locationControllers_1.locationPostController);
+exports.locationRoutes.delete('/locations/:id', validate_token_1.verifyToken, locationControllers_1.locationDeleteController);
+exports.locationRoutes.put('/locations/:id', validate_token_1.verifyToken, locationControllers_1.locationPutController);
